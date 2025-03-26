@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private int count; 
     private float movementX;
     private float movementY;
+    private float moveHorizontal;
+    private float moveVertical;
+    private float jump;
 
     // Start is called before the first frame update
     void Start()
@@ -42,12 +45,33 @@ public class PlayerController : MonoBehaviour
               Destroy(GameObject.FindGameObjectWithTag("Enemy"));
          }
      }
-       private void FixedUpdate() 
-   {
-          Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
+ 
+   
+   void FixedUpdate ()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis ("Vertical");
+
+        Vector3 jump = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
 
           rb.AddForce(movement * speed); 
-   }
+
+
+
+
+        GetComponent<Rigidbody>().AddForce (movement * speed * Time.deltaTime);
+
+        {
+            if (Input.GetKeyDown ("space") && GetComponent<Rigidbody>().transform.position.y <= 0.6250001f) {
+                Vector3 jump2 = new Vector3 (0.0f, 500.0f,   0.0f);
+
+                GetComponent<Rigidbody>().AddForce (jump2);
+            }
+        }
+        
+
+    }
 
    private void OnCollisionEnter(Collision collision)
 {
