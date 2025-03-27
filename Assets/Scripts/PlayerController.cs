@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
      }
  
    
-   void FixedUpdate ()
+   void Update ()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis ("Vertical");
@@ -63,8 +63,8 @@ public class PlayerController : MonoBehaviour
         GetComponent<Rigidbody>().AddForce (movement * speed * Time.deltaTime);
 
         {
-            if (Input.GetKeyDown ("space") && GetComponent<Rigidbody>().transform.position.y <= 0.6250001f) {
-                Vector3 jump2 = new Vector3 (0.0f, 500.0f,   0.0f);
+            if (Input.GetKeyDown ("space") && GetComponent<Rigidbody>().transform.position.y <= 5.0f) {
+                Vector3 jump2 = new Vector3 (0.0f, 300.0f,   0.0f);
 
                 GetComponent<Rigidbody>().AddForce (jump2);
             }
