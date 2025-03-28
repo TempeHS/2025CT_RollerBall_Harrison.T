@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
               Destroy(GameObject.FindGameObjectWithTag("Enemy"));
          }
      }
- 
+    
    
    void Update ()
     {
@@ -53,14 +53,13 @@ public class PlayerController : MonoBehaviour
         float moveVertical = Input.GetAxis ("Vertical");
 
         Vector3 jump = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
+        Vector3 movement = new Vector3 (0f, 0.0f, 1f);
 
-          rb.AddForce(movement * speed); 
-
-
-
+         
 
         GetComponent<Rigidbody>().AddForce (movement * speed * Time.deltaTime);
+
+        
 
         {
             if (Input.GetKeyDown ("space") && GetComponent<Rigidbody>().transform.position.y <= 5.0f) {
