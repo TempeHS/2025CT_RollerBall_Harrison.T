@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
          
 
-        GetComponent<Rigidbody>().AddForce (movement * speed * Time.deltaTime);
+        GetComponent<Rigidbody>().velocity = 1f * speed * Time.deltaTime;
 
         
 
