@@ -52,18 +52,18 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis ("Vertical");
 
-        Vector3 jump = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        Vector3 movement = new Vector3 (0f, 0.0f, 1f);
-
+        Vector3 jump = new Vector3(moveHorizontal, 1.0f, moveVertical);
+        Vector3 movement = new Vector3 (0f, -100.0f, 150f);
+        
          
 
-        GetComponent<Rigidbody>().velocity = 1f * speed * Time.deltaTime;
+        GetComponent<Rigidbody>().velocity = movement * speed * Time.deltaTime;
 
-        
+    
 
         {
-            if (Input.GetKeyDown ("space") && GetComponent<Rigidbody>().transform.position.y <= 5.0f) {
-                Vector3 jump2 = new Vector3 (0.0f, 300.0f,   0.0f);
+            if (Input.GetKeyDown ("space") && GetComponent<Rigidbody>().transform.position.y <= 20.0f) {
+                Vector3 jump2 = new Vector3 (0.0f, 6000.0f,   0.0f);
 
                 GetComponent<Rigidbody>().AddForce (jump2);
             }
